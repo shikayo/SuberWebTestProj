@@ -1,0 +1,39 @@
+<div class="main-container">
+  <div class="search">
+    <form >
+    <div class="first-s">
+      <input placeholder="Name"  type="text" [(ngModel)]="searchForm.name" name="name"/>
+    </div>
+    <div class="second-s">
+      <input placeholder="country" type="text" [(ngModel)]="searchForm.country" name="country"/>
+    </div>
+    <div class="button-s">
+      <button (click)="search()">Показать</button>
+    </div>
+    </form>
+  </div>
+
+  <div class="table-u">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="alpha_two_code">
+        <th mat-header-cell *matHeaderCellDef>Country Code</th>
+        <td mat-cell *matCellDef="let element">{{element.alpha_two_code}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let element">{{element.country}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+    </table>
+  </div>
+</div>
